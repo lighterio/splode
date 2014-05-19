@@ -15,7 +15,7 @@ your knowledge - like this:
 ```
 process.on(‘uncaughtException’, function noop (err) {})
 ```
-[![](http://media.giphy.com/media/gFwZfXIqD0eNW/giphy.gif)]
+![](http://media.giphy.com/media/gFwZfXIqD0eNW/giphy.gif)
 
 This can be detrimental to your system, and it's an awful practice... so the
 temptation is to simply exit whenever an uncaught exception occurs.
@@ -36,9 +36,10 @@ allow the process to continue, otherwise it will exit.
 ```javascript
 var splode = require('splode');
 
-splode.listen(function (err) {
-	if (/ENOTSERIOUS/.test(err.message)) {
-		console.error("An error occurred, but it's not serious.", e);
+splode.listen(function (error) {
+	// If the error isn't serious, we can `recover`.
+	if (/ENOTSERIOUS/.test(error.message)) {
+		// When we recover, Splode will log a warning.
 		splode.recover();
 	}
 });

@@ -26,7 +26,7 @@ splode.listen = function (callback) {
 * Tell Splode not to exit the process.
 */
 splode.recover = function () {
-  splode._recover = true;
+  splode._isRecoverable = true;
 };
 
 /**
@@ -53,31 +53,24 @@ splode.setLogger = function (logger) {
  * Uniquely listen for uncaught exceptions.
  */
 process.removeAllListeners('uncaughtException');
-process.on('uncaughtException', function SPLODE_LISTENER(err) {
+process.on('uncaughtException', function SPLODE_LISTENER(error) {
   ++splode._exceptionCount;
-  splode._recover = false;
+  splode._isRecoverable = false;
   try {
     splode._callbacks.forEach(function (callback) {
-      callback(err);
+      callback(error);
     });
   }
   catch (e) {
     splode._logger.error('Splode detected an error in an error handler.');
-    splode._recover = true;
+    splode._isRecoverable = true;
   }
-  var message = err.message || err;
-  try {
-      message += err.stack.toString();
-  }
-  catch (e) {
-  }
-
-  if (splode._recover) {
-      splode._logger.warn(err);
+  if (splode._isRecoverable) {
+      splode._logger.warn(error);
   }
   else {
-    splode._logger.error(err);
+    splode._logger.error(error);
     process.exit();
   }
-  delete splode._recover;
+  delete splode._isRecoverable;
 });
