@@ -6,10 +6,10 @@
   ],
   "version": "0.0.2",
   "main": "splode.js",
-  "homepage": "http://github.com/zerious/splode",
-  "repository": "http://github.com/zerious/splode.git",
+  "homepage": "http://github.com/lighterio/splode",
+  "repository": "http://github.com/lighterio/splode.git",
   "bugs": {
-    "url": "http://github.com/zerious/splode/issues"
+    "url": "http://github.com/lighterio/splode/issues"
   },
   "author": {
     "name": "Sam Eubank",
@@ -24,24 +24,23 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/zerious/splode/blob/master/MIT-LICENSE.md"
+      "url": "http://github.com/lighterio/splode/blob/master/MIT-LICENSE.md"
     }
   ],
   "engines": [
     "node >= 0.2.6"
   ],
   "scripts": {
-    "test": "mocha",
-    "retest": "mocha --watch",
-    "cover": "istanbul cover _mocha",
+    "test": "./node_modules/exam/exam.js",
+    "retest": "./node_modules/exam/exam.js --watch",
+    "cover": "istanbul cover ./node_modules/exam/exam.js",
     "report": "open coverage/lcov-report/index.html",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "dependencies": {},
   "devDependencies": {
-    "zeriousify": "0.1.4",
-    "assert-plus": "0.1.5",
-    "mocha": "1.19.0",
+    "zeriousify": "0.1.9",
+    "exam": "0.0.5",
     "istanbul": "0.2.10",
     "coveralls": "2.10.0"
   }

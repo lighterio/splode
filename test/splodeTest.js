@@ -1,5 +1,3 @@
-var assert = require('assert-plus');
-
 require('zeriousify').test();
 
 var splode = require('../splode');
@@ -51,12 +49,12 @@ describe('splode', function () {
 	describe('.setLogger', function () {
 
 			it('should be a function', function () {
-				assert.equal(typeof splode.setLogger, 'function');
+				is(typeof splode.setLogger, 'function');
 			});
 
 			it('should set a logger', function () {
 					splode.setLogger(new AppendLogger());
-					assert.equal(splode._logger.ERR.length, 0);
+					is(splode._logger.ERR.length, 0);
 			});
 
 			it('should require .error and .warn', function () {
@@ -74,7 +72,7 @@ describe('splode', function () {
 				splode.setLogger({error: doNothing});
 				splode.setLogger({error: 1, warn: doNothing});
 				splode.setLogger({error: doNothing, warn: 1});
-				assert.equal(splode._logger.IS_BLACK_HOLE, true);
+				is(splode._logger.IS_BLACK_HOLE, true);
 				splode.setLogger(logger);
 			});
 
@@ -83,7 +81,7 @@ describe('splode', function () {
 	describe('.listen', function () {
 
 		it('should be a function', function () {
-			assert.equal(typeof splode.listen, 'function');
+			is(typeof splode.listen, 'function');
 		});
 
 		it('should listen for errors', function (done) {
@@ -91,8 +89,8 @@ describe('splode', function () {
 			exits = 0;
 			splode.listen(function (err) {
 				setTimeout(function () {
-					assert.equal(err, 'Error: error');
-					assert.equal(exits, 1);
+					is(err, 'Error: error');
+					is(exits, 1);
 					done();
 				}, 10);
 			});
@@ -112,7 +110,7 @@ describe('splode', function () {
 	describe('.recover', function () {
 
 		it('should be a function', function () {
-			assert.equal(typeof splode.recover, 'function');
+			is(typeof splode.recover, 'function');
 		});
 
 		it('should recover from an error', function (done) {
@@ -123,7 +121,7 @@ describe('splode', function () {
 					splode.recover();
 				}
 				setImmediate(function () {
-					assert.equal(exits, 0);
+					is(exits, 0);
 					done();
 				});
 			});

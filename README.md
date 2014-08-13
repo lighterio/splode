@@ -1,10 +1,10 @@
 # Splode
 
 [![NPM Version](https://badge.fury.io/js/splode.png)](http://badge.fury.io/js/splode)
-[![Build Status](https://travis-ci.org/zerious/splode.png?branch=master)](https://travis-ci.org/zerious/splode)
-[![Code Coverage](https://coveralls.io/repos/zerious/splode/badge.png?branch=master)](https://coveralls.io/r/zerious/splode)
-[![Dependencies](https://david-dm.org/zerious/splode.png?theme=shields.io)](https://david-dm.org/zerious/splode)
-[![Support](http://img.shields.io/gittip/zerious.png)](https://www.gittip.com/zerious/)
+[![Build Status](https://travis-ci.org/lighterio/splode.png?branch=master)](https://travis-ci.org/lighterio/splode)
+[![Code Coverage](https://coveralls.io/repos/lighterio/splode/badge.png?branch=master)](https://coveralls.io/r/lighterio/splode)
+[![Dependencies](https://david-dm.org/lighterio/splode.png?theme=shields.io)](https://david-dm.org/lighterio/splode)
+[![Support](http://img.shields.io/gittip/zerious.png)](https://www.gittip.com/lighterio/)
 
 Splode is a simple utility for handling uncaught exceptions.
 
