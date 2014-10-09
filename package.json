@@ -1,47 +1,33 @@
 {
   "name": "splode",
+  "version": "0.0.2",
   "description": "A Node.js uncaught exception handler",
+  "dependencies": {},
+  "devDependencies": {
+    "zeriousify": "^0.1.10",
+    "exam": "^0.0.8",
+    "istanbul": "0.2.10",
+    "coveralls": "2.10.0"
+  },
   "keywords": [
     "splode"
   ],
-  "version": "0.0.2",
   "main": "splode.js",
-  "homepage": "http://github.com/lighterio/splode",
-  "repository": "http://github.com/lighterio/splode.git",
-  "bugs": {
-    "url": "http://github.com/lighterio/splode/issues"
+  "engines": {
+    "node": ">=0.2.6"
   },
-  "author": {
-    "name": "Sam Eubank",
-    "email": "sameubank@gmail.com"
-  },
-  "contributors": [
-    {
-      "name": "Sam Eubank",
-      "email": "sameubank@gmail.com"
-    }
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/lighterio/splode/blob/master/MIT-LICENSE.md"
-    }
-  ],
-  "engines": [
-    "node >= 0.2.6"
-  ],
   "scripts": {
     "test": "./node_modules/exam/exam.js",
-    "retest": "./node_modules/exam/exam.js --watch",
     "cover": "istanbul cover ./node_modules/exam/exam.js",
     "report": "open coverage/lcov-report/index.html",
     "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "zeriousify": "0.1.9",
-    "exam": "0.0.5",
-    "istanbul": "0.2.10",
-    "coveralls": "2.10.0"
-  }
+  "repository": "https://github.com/lighterio/splode.git",
+  "bugs": "https://github.com/lighterio/splode/issues",
+  "homepage": "http://github.com/lighterio/splode",
+  "author": "Sam Eubank <sameubank@gmail.com>",
+  "contributors": [
+    "Sam Eubank <sameubank@gmail.com>"
+  ],
+  "license": "MIT"
 }
