@@ -1,13 +1,10 @@
 {
   "name": "splode",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Node.js uncaught exception handler",
   "dependencies": {},
   "devDependencies": {
-    "zeriousify": "^0.1.10",
-    "exam": "^0.0.8",
-    "istanbul": "0.2.10",
-    "coveralls": "2.10.0"
+    "exam": "^0.2.2"
   },
   "keywords": [
     "splode"
@@ -18,9 +15,9 @@
   },
   "scripts": {
     "test": "./node_modules/exam/exam.js",
-    "cover": "istanbul cover ./node_modules/exam/exam.js",
+    "cover": "./node_modules/exam/exam-cover.js",
     "report": "open coverage/lcov-report/index.html",
-    "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coveralls": "./node_modules/exam/exam-coveralls.js"
   },
   "repository": "https://github.com/lighterio/splode.git",
   "bugs": "https://github.com/lighterio/splode/issues",

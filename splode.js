@@ -1,4 +1,10 @@
-var splode = module.exports = {};
+// There should only be one Splode per process.
+if (process.splode) {
+  module.exports = process.splode;
+  return;
+}
+
+var splode = process.splode = exports;
 
 /**
  * Expose the splode version.
@@ -16,11 +22,16 @@ splode._callbacks = [];
 splode._exceptionCount = 0;
 
 /**
+ * Delay for a second before making the process exit (so it can log errors).
+ */
+splode._exitDelay = 1e3;
+
+/**
  * Allow users to listen for uncaught exceptions.
  */
 splode.listen = function (callback) {
   splode._callbacks.push(callback);
-}
+};
 
 /**
 * Tell Splode not to exit the process.
@@ -66,11 +77,19 @@ process.on('uncaughtException', function SPLODE_LISTENER(error) {
     splode._isRecoverable = true;
   }
   if (splode._isRecoverable) {
-      splode._logger.warn(error);
+    splode._logger.warn(error);
   }
   else {
-    splode._logger.error(error);
-    process.exit();
+    if (!error) {
+      try {
+        throw new Error('Uncaught exception.');
+      }
+      catch (e) {
+        error = e;
+      }
+    }
+    splode._logger.error('[Splode] ' + (error.stack || error));
+    setTimeout(process.exit, splode._exitDelay);
   }
   delete splode._isRecoverable;
 });

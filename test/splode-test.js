@@ -1,5 +1,3 @@
-require('zeriousify').test();
-
 var splode = require('../splode');
 
 var exit = process.exit;
@@ -86,10 +84,13 @@ describe('splode', function () {
 
     it('should listen for errors', function (done) {
       listenUniquely();
+      splode._exitDelay = 5;
       exits = 0;
       splode.listen(function (err) {
         setTimeout(function () {
-          is.equal(err, 'Error: error');
+          is.error(err);
+          is(err.message, 'error');
+          is.in(err.stack, 'splode');
           is(exits, 1);
           done();
         }, 10);
